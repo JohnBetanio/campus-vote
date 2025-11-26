@@ -34,7 +34,7 @@ Route::prefix('voter')->group(function () {
         Route::get('login', [VoterAuthController::class, 'showLogin'])->name('voter.login');
         Route::post('login', [VoterAuthController::class, 'login']);
     });
-    
+
     // Authenticated routes (logged in)
     Route::middleware('auth:voter')->group(function () {
         Route::post('logout', [VoterAuthController::class, 'logout'])->name('voter.logout');
@@ -53,7 +53,7 @@ Route::prefix('admin')->group(function () {
         Route::get('login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
         Route::post('login', [AdminAuthController::class, 'login']);
     });
-    
+
     // Authenticated routes (logged in)
     Route::middleware('auth:admin')->group(function () {
         Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
@@ -84,7 +84,7 @@ Route::prefix('voter')->middleware('auth:voter')->group(function () {
 Route::prefix('admin')->middleware('auth:admin')->group(function () {
     // Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    
+
     // Elections Management
     Route::controller(ElectionController::class)->group(function () {
         Route::get('elections', 'index')->name('admin.elections.index');
@@ -95,23 +95,25 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
         Route::post('elections/{election}/end', 'endElection')->name('admin.elections.end');
         Route::delete('elections/{election}', 'destroy')->name('admin.elections.destroy');
     });
-    
+
     // Voters Management
     Route::controller(AdminVoterController::class)->group(function () {
         Route::get('voters', 'index')->name('admin.voters.index');
         Route::delete('voters/{voter}', 'destroy')->name('admin.voters.destroy');
     });
-    
+
     // Results
     Route::controller(ResultController::class)->group(function () {
         Route::get('results', 'index')->name('admin.results.index');
         Route::get('results/{election}', 'show')->name('admin.results.show');
     });
-    
+
     // Announcements
     Route::controller(AnnouncementController::class)->group(function () {
         Route::get('announcements', 'index')->name('admin.announcements.index');
         Route::post('announcements', 'store')->name('admin.announcements.store');
+        Route::get('announcements/{announcement}/edit', 'edit')->name('admin.announcements.edit');  // NEW
+        Route::put('announcements/{announcement}', 'update')->name('admin.announcements.update');   // NEW
         Route::delete('announcements/{announcement}', 'destroy')->name('admin.announcements.destroy');
     });
 });

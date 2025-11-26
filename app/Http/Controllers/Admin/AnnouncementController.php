@@ -26,6 +26,24 @@ class AnnouncementController extends Controller
         
         return redirect()->route('admin.announcements.index')->with('success', 'Announcement created successfully!');
     }
+      // NEW: Show edit form
+    public function edit(Announcement $announcement)
+    {
+        return response()->json($announcement);
+    }
+     // NEW: Update announcement
+    public function update(Request $request, Announcement $announcement)
+    {
+        $validated = $request->validate([
+            'content' => 'required|string|max:1000',
+        ]);
+
+        $announcement->update($validated);
+
+        return redirect()
+            ->route('admin.announcements.index')
+            ->with('success', 'Announcement updated successfully!');
+    }
 
     public function destroy(Announcement $announcement)
     {

@@ -499,6 +499,47 @@
         color: #333;
         line-height: 1.5;
     }
+    /* Edit button styling */
+.btn-primary {
+    background-color: #0366d6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0256c1;
+}
+
+/* Ensure buttons are inline */
+td form {
+    display: inline;
+}
+
+/* Modal improvements */
+.modal-overlay {
+    backdrop-filter: blur(5px);
+}
+
+.modal {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Show edited timestamp in italics */
+td .edited-time {
+    font-size: 12px;
+    color: #999;
+    font-style: italic;
+}
 
     /* Welcome Section */
     .welcome-section {
