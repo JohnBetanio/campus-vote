@@ -63,7 +63,7 @@
 
         .auth-right {
             flex: 1;
-            background-color: #1e5128;
+            background: linear-gradient(135deg, #063a12, #168a3a);
             display: flex;
             justify-content: center;
             align-items: center;

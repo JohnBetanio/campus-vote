@@ -145,7 +145,7 @@
 
     .sidebar {
         width: 260px;
-        background-color: #1e5128;
+        background-color: #116b27;
         color: white;
         display: flex;
         flex-direction: column;
@@ -255,7 +255,7 @@
     }
 
     .top-bar {
-        background-color: #1e5128;
+        background-color: #116b27;
         color: white;
         padding: 15px 40px;
         display: flex;
